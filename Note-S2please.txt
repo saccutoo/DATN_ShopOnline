@@ -1,0 +1,64 @@
+masy ca nhan 
+
+DESKTOP-NG4VDRK\MSSQLSERVER1
+DESKTOP-NG4VDRK\laptop
+
+online 
+spleasen_shop
+spleasen_admin
+pass:Ie41ss6%
+
+hangfire
+spleasen_hangfire
+spleasen_hangfire
+pass:Ie41ss6%
+
+
+spleasen_sa
+@xO6eh85
+
+
+/WEB_SHOP/Home/Broken
+
+  <add name="ado" connectionString="data source=localhost\SQL2014;initial catalog=spleasen_shop;user id=spleasen_admin;password=Ie41ss6%;MultipleActiveResultSets=True;App=EntityFramework" providerName="System.Data.SqlClient" />
+
+ <add key="DBConnection" value="data source=localhost\SQL2014;initial catalog=spleasen_shop;user id=spleasen_admin;password=Ie41ss6%;MultipleActiveResultSets=True;App=EntityFramework" />
+
+
+
+ALTER PROCEDURE[dbo].[System_Get_ExcuteSqlString]
+	@SqlData			NVARCHAR(MAX) 
+as
+ 
+BEGIN
+	DECLARE @ExeQuery NVARCHAR(MAX), @params NVARCHAR(MAX)
+	SET @ExeQuery = N'USE [spleasen_shop]' + N'
+					' + @SqlData
+	EXEC(@ExeQuery)
+END
+
+
+aiacademy
+vinhtq@123
+
+
+https://github.com/saccutoo/S2Please.Shop.git
+
+
+INSERT INTO dbo.CL_TIME_VERSION
+        ( TIME_VERSION )
+VALUES  ( 0  -- TIME_VERSION - bigint
+          )
+
+
+SET INDEX TABLE
+DBCC CHECKIDENT ('Shop.dbo.DATA_SILDE', RESEED, 4);
+
+
+https://bit.ly/37aYQvn : Mc queen
+https://bit.ly/3oMBZMD : Sneaker gucci
+https://bit.ly/3qRGirY : Fashion cổ chun
+https://bit.ly/3mlwxPq : Converse basic
+https://bit.ly/2IIxwev : Sneaker basic độn
+https://bit.ly/2WawtHn : Sneaker GC cao cấp
+https://bit.ly/3oKuKEY : Nike are

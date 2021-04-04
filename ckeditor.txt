@@ -1,0 +1,109 @@
+CKEDITOR.replace( 'editor', {
+    toolbarGroups: [
+        { name: 'mode' },
+        { name: 'basicstyles' }
+    ],    
+    on: {
+        pluginsLoaded: function() {
+            var editor = this,
+                config = editor.config;
+
+            editor.ui.addRichCombo( 'my-combo', {
+                label: 'My Dropdown Label',
+                title: 'My Dropdown Title',
+                toolbar: 'basicstyles,0',
+
+                panel: {               
+                    css: [ CKEDITOR.skin.getPath( 'editor' ) ].concat( config.contentsCss ),
+                    multiSelect: false,
+                    attributes: { 'aria-label': 'My Dropdown Title' }
+                },
+
+                init: function() {    
+                    this.startGroup( 'My Dropdown Group #1' );
+                    this.add( 'foo', 'Foo!' );
+                    this.add( 'bar', 'Bar!' );                    
+
+                    this.startGroup( 'My Dropdown Group #2' );
+                    this.add( 'ping', 'Ping!' );
+                    this.add( 'pong', 'Pong!' );                    
+
+                },
+
+                onClick: function( value ) {
+                    editor.focus();
+                    editor.fire( 'saveSnapshot' );
+
+                    editor.insertHtml( value );
+
+                    editor.fire( 'saveSnapshot' );
+                }
+            } );        
+        }        
+    }
+} );
+
+
+
+
+
+CKEDITOR.plugins.add( 'tokens',
+{   
+   requires : ['richcombo'], //, 'styles' ],
+   init : function( editor )
+   {
+      var config = editor.config,
+         lang = editor.lang.format;
+
+      // Gets the list of tags from the settings.
+      var tags = []; //new Array();
+      //this.add('value', 'drop_text', 'drop_label');
+      tags[0]=["[contact_name]", "Name", "Name"];
+      tags[1]=["[contact_email]", "email", "email"];
+      tags[2]=["[contact_user_name]", "User name", "User name"];
+      
+      // Create style objects for all defined styles.
+
+      editor.ui.addRichCombo( 'tokens',
+         {
+            label : "Insert tokens",
+            title :"Insert tokens",
+            voiceLabel : "Insert tokens",
+            className : 'cke_format',
+            multiSelect : false,
+
+            panel :
+            {
+               css : [ config.contentsCss, CKEDITOR.getUrl( editor.skinPath + 'editor.css' ) ],
+               voiceLabel : lang.panelVoiceLabel
+            },
+
+            init : function()
+            {
+               this.startGroup( "Tokens" );
+               //this.add('value', 'drop_text', 'drop_label');
+               for (var this_tag in tags){
+                  this.add(tags[this_tag][0], tags[this_tag][1], tags[this_tag][2]);
+               }
+            },
+
+            onClick : function( value )
+            {         
+               editor.focus();
+               editor.fire( 'saveSnapshot' );
+               editor.insertHtml(value);
+               editor.fire( 'saveSnapshot' );
+            }
+         });
+   }
+});
+
+
+CKEDITOR.replace( 'editor_id',{
+      toolbar :
+      [
+         ['tokens','Styles', 'Format', 'Bold', 'Italic'],['Undo','Redo']
+      ],
+      extraPlugins: 'tokens'
+   }   
+);
